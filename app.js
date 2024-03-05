@@ -62,6 +62,7 @@ function playRound(playerSelection,computerSelection){
 const buttonR = document.getElementById('buttonR');
 const buttonP = document.getElementById('buttonP');
 const buttonS = document.getElementById('buttonS');
+const roundtext = document.getElementById('round');
 const results = document.getElementById('results');
 const scoretext = document.getElementById('scoretext');
 const winner = document.getElementById('winner');
@@ -71,8 +72,11 @@ buttonReset.textContent = "Click me to Reset the Game!"
 
 function playGame() {
     var score = 0;
-
+    var round = 0;
+    roundtext.textContent = `Round: ${round}`;
     buttonR.addEventListener('click', function() {
+        round ++;
+        roundtext.textContent = `Round: ${round}`;
         var computerSelection = getComputerChoice();
         results.textContent = playRound('ROCK', computerSelection);
         if (results.textContent === "You Won! ROCK beats SCISSORS!"){
@@ -87,12 +91,16 @@ function playGame() {
                 results.textContent = "";
                 score = score - score;
                 scoretext.textContent = "";
+                round = 0;
                 scoreClass.removeChild(buttonReset);
+                roundtext.textContent = `Round: ${round}`;
             })
         }
     });
 
     buttonP.addEventListener('click', function() {
+        round ++;
+        roundtext.textContent = `Round: ${round}`;
         var computerSelection = getComputerChoice();
         results.textContent = playRound('PAPER', computerSelection);
         if (results.textContent === "You Won! PAPER beats ROCK"){
@@ -107,12 +115,16 @@ function playGame() {
                 results.textContent = "";
                 score = score - score;
                 scoretext.textContent = "";
+                round = 0;
                 scoreClass.removeChild(buttonReset);
+                roundtext.textContent = `Round: ${round}`;
             })
         }
     });
 
     buttonS.addEventListener('click', function() {
+        round ++;
+        roundtext.textContent = `Round: ${round}`;
         var computerSelection = getComputerChoice();
         results.textContent = playRound('SCISSORS', computerSelection);
         if (results.textContent === "You Won! SCISSORS beats PAPER!"){
@@ -127,7 +139,9 @@ function playGame() {
                 results.textContent = "";
                 score = score - score;
                 scoretext.textContent = "";
+                round = 0;
                 scoreClass.removeChild(buttonReset);
+                roundtext.textContent = `Round: ${round}`;
             })
         }
     });
